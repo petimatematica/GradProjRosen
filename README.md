@@ -86,6 +86,86 @@ This file contains the implementation of the Projected Gradient Method equipped 
 - **seqx )Matrix{Vector{Float64}}):** Matrix with the terms of the sequence $\{x_k\}$
 - **sum(evalf_\gamma) (Int64):** Total number of function evaluations
 
+### Function – Spectral Projected Gradient Method (SPG.jl)
+
+#### Arguments
+
+- **$\boldsymbol{x_0}$ (Vector):** The starting point where the method will be initiated.
+- **$f$ (Function):** The objective function to be minimized.
+- **$\nabla f$ (Function):** The gradient of the objective function.
+- **$proj$ (Function):** The projection function that ensures the feasibility of the solutions.
+- **$\varepsilon$ (Float64):** Convergence tolerance. The algorithm stops when the norm of the gradient is smaller than this value.
+- **max_iter (Int64):** Maximum allowed number of iterations.
+- **$\lambda_{\text{min}}$ (Float64):** Lower bound for the $\lambda$ parameter.
+- **$\lambda_{\text{max}}$ (Float64):** Upper bound for the $\lambda$ parameter.
+- **$M$ (Int64):** The number of iterations used to compute the maximum function value from the last iterations.
+- **$\sigma_1, \sigma_2$ (Float64):** Parameters that control step size adaptation.
+- **$\eta$ (Float64):** Parameter controlling the Armijo condition (used in line search).
+- **linesearch (Function):** The function responsible for performing the line search, updating the point $\boldsymbol{x}$ and recalculating the gradient.
+
+#### Outputs
+
+- **$\boldsymbol{x}$ (Vector):** The point that minimizes the objective function after the iterations.
+- **$\boldsymbol{f(x)}$ (Float64):** The objective function value at the minimizer.
+- **info (DataFrame):** A DataFrame containing information about the minimization process (e.g., gradient norms, function values in each iteration).
+- **et (Float64):** Total time spent running the algorithm.
+- **error (Int64):** Error indicator (0 - Convergence, 1 - Maximum iterations reached).
+- **seqx (Matrix{Vector{Float64}}):** Matrix containing the terms of the sequence $\{x_k\}$ generated during the iterations.
+- **evalf_k (Int64):** Total number of function evaluations.
+- **evalproj_k (Int64):** Total number of projection evaluations.
+
+### spg1 Function – Backtracking Routine for SPG
+
+#### Arguments
+
+- **$k$ (Int64):** The index of the current iteration.
+- **$\lambda_k$ (Float64):** The regularization parameter in iteration $k$.
+- **$\boldsymbol{x_k}$ (Vector):** Current point at iteration $k$.
+- **$\nabla f(\boldsymbol{x_k})$ (Vector):** Gradient of the objective function at $\boldsymbol{x_k}$.
+- **$f_{\text{hist}}$ (Array{Float64}):** History of objective function evaluations.
+- **$M$ (Int64):** The number of iterations used to compute the maximum function value.
+- **$\sigma_1, \sigma_2$ (Float64):** Parameters controlling step size adaptation.
+- **$\eta$ (Float64):** Parameter for the Armijo condition.
+- **$proj$ (Function):** The projection function.
+
+#### Outputs
+
+- **$\boldsymbol{x_{k+1}}$ (Vector):** The new point after iteration.
+- **$\nabla f(\boldsymbol{x_{k+1}})$ (Vector):** New gradient of the objective function.
+- **$s_k$ (Vector):** The descent direction at iteration $k$.
+- **$y_k$ (Vector):** The difference in gradients between iterations $k$ and $k+1$.
+- **$f_{\text{hist}}$ (Array{Float64}):** History of function evaluations.
+- **$\alpha$ (Float64):** The computed step size.
+- **et (Float64):** Time spent in this iteration.
+- **evalf (Int64):** Number of function evaluations during this iteration.
+- **evalproj (Int64):** Number of projection evaluations.
+
+### spg2 Function – Backtracking Routine for SPG
+
+#### Arguments
+
+- **$k$ (Int64):** The index of the iteration.
+- **$\lambda_k$ (Float64):** The regularization parameter.
+- **$\boldsymbol{x_k}$ (Vector):** The current point.
+- **$\nabla f(\boldsymbol{x_k})$ (Vector):** The gradient of the objective function.
+- **$f_{\text{hist}}$ (Array{Float64}):** History of function evaluations.
+- **$M$ (Int64):** The number of iterations to compute the maximum value.
+- **$\sigma_1, \sigma_2$ (Float64):** Step size control parameters.
+- **$\eta$ (Float64):** Armijo condition control parameter.
+- **$proj$ (Function):** The projection function.
+
+#### Outputs
+
+- **$\boldsymbol{x_{k+1}}$ (Vector):** The new point after iteration.
+- **$\nabla f(\boldsymbol{x_{k+1}})$ (Vector):** New gradient of the objective function.
+- **$s_k$ (Vector):** The descent direction.
+- **$y_k$ (Vector):** The difference in gradients.
+- **$f_{\text{hist}}$ (Array{Float64}):** History of function evaluations.
+- **$\alpha$ (Float64):** The computed step size.
+- **et (Float64):** Total time spent.
+- **evalf (Int64):** Number of function evaluations.
+- **evalproj (Int64):** Number of projection evaluations.
+
 ## projections.jl
 This file contains projection functions for 6 different feasible sets, whose parameters can be easily modified.
 
