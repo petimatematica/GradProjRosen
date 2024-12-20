@@ -86,7 +86,9 @@ This file contains the implementation of the Projected Gradient Method equipped 
 - **seqx )Matrix{Vector{Float64}}):** Matrix with the terms of the sequence $\{x_k\}$
 - **sum(evalf_\gamma) (Int64):** Total number of function evaluations
 
-### Function – Spectral Projected Gradient Method (SPG.jl)
+## SPG.jl
+
+### Function – Spectral Projected Gradient Method 
 
 #### Arguments
 
@@ -114,7 +116,7 @@ This file contains the implementation of the Projected Gradient Method equipped 
 - **evalf_k (Int64):** Total number of function evaluations.
 - **evalproj_k (Int64):** Total number of projection evaluations.
 
-### spg1 Function – Backtracking Routine for SPG
+### SPG1 function – Backtracking Routine for SPG
 
 #### Arguments
 
@@ -140,7 +142,7 @@ This file contains the implementation of the Projected Gradient Method equipped 
 - **evalf (Int64):** Number of function evaluations during this iteration.
 - **evalproj (Int64):** Number of projection evaluations.
 
-### spg2 Function – Backtracking Routine for SPG
+### SPG2 function – Backtracking Routine for SPG
 
 #### Arguments
 
