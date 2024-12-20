@@ -1,9 +1,9 @@
 # GradProjRosen
 
-## GPA1.jl
+## PG1.jl
 This file contains the implementation of the Projected Gradient Method equipped with Armijo's linesearch along feasible directions.
 
-### Function GPA1 - Monotone Armijo linesearch along feasible directions
+### PG1 function - Monotone Armijo linesearch along feasible directions
 
 #### Arguments
 
@@ -21,7 +21,7 @@ This file contains the implementation of the Projected Gradient Method equipped 
 - **ierror (Int64):** The error of linesearch (0 - no error, 1 - step length too small)
 - **evalf (Int64):** Number of function evaluations in the current iteration
 
-### Function method1 - Gradient Projected Method with monotone Armijo linesearch along feasible directions
+### method1 function - Gradient Projected Method with monotone Armijo linesearch along the feasible directions
 
 #### Arguments
 
@@ -43,10 +43,10 @@ This file contains the implementation of the Projected Gradient Method equipped 
 - **seqx (Matrix{Vector{Float64}}):** Matrix with the terms of the sequence $\{x_k\}$
 - **sum(evalf_\gamma) (Int64):** Total number of function evaluations
 
-## GPA2.jl
+## PG2.jl
 This file contains the implementation of the Projected Gradient Method equipped with Armijo linesearch along the projection arc.
 
-### Function GPA2 - Armijo linesearch along the projection arc
+### PG2 function - Armijo linesearch along the projection arc
 
 #### Arguments
 
@@ -64,7 +64,7 @@ This file contains the implementation of the Projected Gradient Method equipped 
 - **ierror (Int64):** The error of linesearch (0 - no error, 1 - step length too small)
 - **evalf (Int64):** Number of function evaluations
 
-### Function method4 - Gradient Projected Method with Armijo linesearch along the projection arc
+### method2 function - Gradient Projected Method with Armijo linesearch along the projection arcs
 
 #### Arguments
 
@@ -88,7 +88,7 @@ This file contains the implementation of the Projected Gradient Method equipped 
 
 ## SPG.jl
 
-### Function – Spectral Projected Gradient Method 
+### SPG function – Spectral Projected Gradient Method 
 
 #### Arguments
 
